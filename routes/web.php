@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SlackController@slack');
+Route::post('/', 'SlackController@slack_post');
+Route::get('/channel', 'SlackController@channel');
+Route::get('/rooms', 'SlackController@chat');
+Route::post('/rooms', 'SlackController@chat');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
