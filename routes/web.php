@@ -11,12 +11,19 @@
 |
 */
 
-Route::get('/', 'SlackController@slack');
-Route::post('/', 'SlackController@slack_post');
-Route::get('/channel', 'SlackController@channel');
-Route::get('/rooms', 'SlackController@chat');
-Route::post('/rooms', 'SlackController@chat');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/slack', 'SlackController@slack');
+    Route::post('/slack', 'SlackController@create_channel');
+    Route::get('/channel', 'SlackController@channel');
+    Route::get('/rooms', 'SlackController@chat');
+    Route::post('/rooms', 'SlackController@chat');
+    Route::get('/rooms/{name}', 'SlackController@get_comment');
+    Route::post('/comment', 'SlackController@comment');
+    Route::get('/user', 'SlackController@user');
+});
 
+//Route::post('/comment', 'SlackController@comment');
+
+Route::get('/', 'HomeController@index');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
