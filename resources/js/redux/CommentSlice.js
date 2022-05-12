@@ -10,7 +10,8 @@ export const CommentSlice = createSlice({
             state.comment += 1;
         }
     }
-})
+});
+//コメントをしたときの１増えるようにすることで、他のレンダリングに使う。
 
 export const CommentAction = CommentSlice.actions;
 

@@ -14,7 +14,7 @@ function Example (){
     return (
     <div>
          <Provider store={store}>
-              <Header /> {/* first */}
+              <Header /> 
               <AppBody>
                 <SideBar />
                 <Comment />

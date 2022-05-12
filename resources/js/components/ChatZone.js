@@ -7,25 +7,23 @@ import { useSelector } from 'react-redux';
 function ChatZone(){
   const name = useSelector(state => state.channel?.roomName);
   const comment = useSelector(state => state.comment.comment);
-  const roomName = useSelector(state => state.channel.roomName);
   const [chats, setChats] = useState([]);
   const chatRef = useRef();
 
   
-   useEffect(() => {
+  useEffect(() => {
      axios.get(`/rooms/${name}`).then(response => {
-      setChats(response.data);
-     // console.log(response.data);
+      setChats(response.data);  //chatsとして表示
     }).catch(error => {
         console.log(error.message);
     });
-   },[name, comment]);
+   },[name, comment]);   //channelのnameやcommentが変化した時にレンダリング
    
    useEffect(() => {
-       chatRef?.current?.scrollIntoView({
-           behavior: "smooth",
+       chatRef?.current?.scrollIntoView({　　//chatRefまでスクロールダウン
+           behavior: "smooth",　　//ゆっくりと
        })
-   },[chats]);
+   },[chats]);  //chatsが全て取得されて読み込み終わった後にレンダリング
    
    
    console.log(chats);

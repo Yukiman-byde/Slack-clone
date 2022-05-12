@@ -18,14 +18,14 @@ import { useSelector } from 'react-redux';
 
 
 function SideBar() {
-  const selector = useSelector(state => state.channel.roomName);
-  const [channels, setChannels] = useState([]);
+  const roomName = useSelector(state => state.channel.roomName);
+  const [rooms, setRooms] = useState([]);　
 
  useEffect(() => {
     axios.get('/channel').then((response) => {
-     setChannels(response.data);
+     setRooms(response.data);
       });
- },[selector]);
+ },[roomName]);  //roomNameが変化したときにレンダリング
 
   
   return (
@@ -43,21 +43,21 @@ function SideBar() {
        </SideBarHeader>
 
        {/* Sidebar option is coming and pass the props */}
-       <SideBarOption title="Threads" Icon={InsertCommentIcon}/>
-       <SideBarOption title="Mentions & reactions" Icon={InboxIcon}/>
-       <SideBarOption title="Saved Item" Icon={DraftsIcon}/>
-       <SideBarOption title="Channel browser" Icon={BookmarkBorderIcon}/>
-       <SideBarOption title="People & user group" Icon={PeopleAltIcon}/>
-       <SideBarOption title="Apps" Icon={AppsIcon}/>
-       <SideBarOption title="File browser" Icon={FileCopyIcon}/>
-       <SideBarOption title="Show less" Icon={ExpandLessIcon}/>
+       <SideBarOption name="Threads" Icon={InsertCommentIcon}/>
+       <SideBarOption name="Mentions & reactions" Icon={InboxIcon}/>
+       <SideBarOption name="Saved Item" Icon={DraftsIcon}/>
+       <SideBarOption name="Channel browser" Icon={BookmarkBorderIcon}/>
+       <SideBarOption name="People & user group" Icon={PeopleAltIcon}/>
+       <SideBarOption name="Apps" Icon={AppsIcon}/>
+       <SideBarOption name="File browser" Icon={FileCopyIcon}/>
+       <SideBarOption name="Show less" Icon={ExpandLessIcon}/>
        <hr />
-       <SideBarOption title="Channels" Icon={ExpandMoreIcon}/>
+       <SideBarOption name="Channels" Icon={ExpandMoreIcon}/>
        <hr />
-       <SideBarOption title="Add Channel" addChannelOption Icon={AddIcon}/>
+       <SideBarOption name="Add Channel" addChannelOption Icon={AddIcon}/>
 
-        {channels.map((channel) => (
-            <SideBarOption title={channel.room_name} roomHash={channel.room_hash}/>
+        {rooms.map((room) => (
+            <SideBarOption name={room.room_name}/>
         ))}
     </SideBarContainer>
   )

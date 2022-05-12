@@ -4,27 +4,22 @@ import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import {ChannelAction} from '../redux/ChannelSlice';
 
-//title => roomName
-//roomHash => roomHash
-
-function SideBarOption({ title, Icon, addChannelOption, roomHash }) {
+function SideBarOption({ name, Icon, addChannelOption }) {
   const dispatch = useDispatch();
   
   const addChannel = () => {
-    const channelName = prompt("add a channel name");
-    console.log("エラー");
-    
-    if(channelName){
-      const data = {
-        'room_hash': channelName,
-        'room_name': channelName,
+    const roomName = prompt("add a channel name");
+
+    if(roomName){
+      const data = {  
+        'room_name': roomName,  
       };
       
-      axios.post('/slack', data).then((response) => {
-        //console.log(response.data);
+      axios.post('/slack', data).catch(error => {
+        console.log(error.message);
       });
       dispatch(ChannelAction.showRoom({
-        roomName: channelName,
+        roomName: roomName,
       }));
     }
   };
@@ -32,8 +27,7 @@ function SideBarOption({ title, Icon, addChannelOption, roomHash }) {
 
   const selectChannel = () => {
       dispatch(ChannelAction.showRoom({
-        roomName: title,
-        roomHash: roomHash,
+        roomName: name,
       }));
   };
 
@@ -43,10 +37,10 @@ function SideBarOption({ title, Icon, addChannelOption, roomHash }) {
     >
        {Icon && <Icon style={{fontSize: 18}}/>}
        {Icon ? (
-         <h4>{title}</h4>
+         <h4>{name}</h4>
        ): (
          <SideBarOptionChannel>
-              <h4><span>#</span>{title}</h4>
+              <h4><span>#</span>{name}</h4>
          </SideBarOptionChannel>
        )}
     </SideBarOptionContainer>

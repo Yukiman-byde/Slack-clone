@@ -12,6 +12,8 @@ export const ChannelSlice = createSlice({
   }
 });
 
+//roomnameの変更時にreduxに値としてもたせる。
+
 export const ChannelAction = ChannelSlice.actions;
 
 export default ChannelSlice;
