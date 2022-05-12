@@ -33,6 +33,7 @@ const ChatFragment = styled.div`
 const ChatContent = styled.div`
   min-height: 80px;
   width: 100%;
+  margin-left: 20px;
   align-items: center;
   flex-direction: column;
 `;

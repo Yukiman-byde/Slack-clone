@@ -15,6 +15,8 @@ function Header(){
         {/* HeaderLeft */}
         <HeaderLeft>
           <HeaderAvatar
+          component="a"
+          href="/"
           />
           <AccessTimeIcon className="accessIcon"/>
         </HeaderLeft>
@@ -44,6 +46,7 @@ const HeaderContainer = styled.div`
    padding: 5px;
    background-color: #4a154b;
    color: white;
+   z-index: 999;
 `;
 
 const HeaderLeft = styled.div`

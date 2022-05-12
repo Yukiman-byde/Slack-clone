@@ -20,9 +20,11 @@ function CommentInput() {
     axios.post('/comment', data).then(response => {
       console.log(response);
     });
+    
    setValue("");
 　 dispatch(CommentAction.increment());
   };
+  
   return (
     <CommentInputContainer>
           <form>

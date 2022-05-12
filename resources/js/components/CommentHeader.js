@@ -14,11 +14,6 @@ function CommentHeader() {
           <LockIcon />
           <h3>{headerTitle}</h3>
         </RoomTitle>
-          <AvatarContainer>
-            <AvatarStyled variant="square"/>
-            <AvatarStyled variant="square"/>
-            <AvatarStyled variant="square"/>
-          </AvatarContainer>
        </CommentCaption>
   )
 }
@@ -32,6 +27,9 @@ const CommentCaption = styled.div`
   justify-content: space-between;
   align-items: center;
   display: flex;
+  width: 100%;
+  background: #fff;
+  position: fixed;
 `;
 
 const RoomTitle = styled.div`
@@ -47,22 +45,4 @@ const AvatarContainer = styled.div`
  border: 0.1px solid #49274b;
  transform: scale(0.7);
  border-radius: 6px;
-`;
-
-const AvatarStyled = styled(Avatar)`
-
-  :nth-child(1){
-     z-index: -995;
-     border: 6px solid #fff;
-  }
-  :nth-child(2){
-     z-index: -997;
-     left: -10px;
-     border: 6px solid #fff;
-  }
-  :nth-child(3){
-     z-index: -999;
-     left: -20px;
-     border: 6px solid #fff;
-  }
 `;
