@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import SideBar from './SideBar';
 import { Provider } from 'react-redux';
 import store from '../redux/store';
-import Comment from './Comment'
 
 
 function Example (){
@@ -16,8 +15,7 @@ function Example (){
          <Provider store={store}>
               <Header /> 
               <AppBody>
-                <SideBar />
-                <Comment />
+                <SideBar /> 
               </AppBody>
          </Provider>
     </div>
