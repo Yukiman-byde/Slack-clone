@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-import SideBarOption from './SideBarOption';
 import LockIcon from '@material-ui/icons/Lock';
 import Avatar from '@material-ui/core/Avatar';
 import { useSelector } from 'react-redux';
